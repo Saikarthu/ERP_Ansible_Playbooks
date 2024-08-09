@@ -1,0 +1,13 @@
+
+---
+- name: Manage users
+  hosts: all
+  become: yes
+  tasks:
+    - name: Ensure user exists
+      user:
+        name: "{{ item.name }}"
+        state: present
+        groups: "{{ item.groups }}"
+      with_items:
+        - { name: 'erpuser', groups: 'erpgroup' }

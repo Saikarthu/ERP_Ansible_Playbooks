@@ -1,0 +1,12 @@
+
+---
+- name: Performance tuning
+  hosts: all
+  become: yes
+  tasks:
+    - name: Adjust swappiness
+      sysctl:
+        name: vm.swappiness
+        value: '10'
+        state: present
+        reload: yes
